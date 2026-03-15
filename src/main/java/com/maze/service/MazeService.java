@@ -2,6 +2,7 @@ package com.maze.service;
 
 import com.maze.algorithm.BFS;
 import com.maze.algorithm.DFS;
+import com.maze.algorithm.Dijkstra;
 import com.maze.algorithm.PathfindingAlgorithm;
 import com.maze.model.Grid;
 import com.maze.model.SolveRequest;
@@ -28,7 +29,7 @@ public class MazeService {
     public void init() {
         registerAlgorithm("bfs", new BFS());
         registerAlgorithm("dfs", new DFS());
-        // Future: registerAlgorithm("dijkstra", new Dijkstra());
+        registerAlgorithm("dijkstra", new Dijkstra());
         // Future: registerAlgorithm("astar", new AStar());
     }
 
