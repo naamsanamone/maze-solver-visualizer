@@ -1,0 +1,19 @@
+# === Build output ===
+target/
+
+# === IDE ===
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Maven Wrapper downloaded distribution ===
+.mvn/wrapper/maven-wrapper.jar
+
+# === Logs ===
+*.log
