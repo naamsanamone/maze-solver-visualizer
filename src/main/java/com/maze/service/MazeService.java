@@ -1,5 +1,6 @@
 package com.maze.service;
 
+import com.maze.algorithm.AStar;
 import com.maze.algorithm.BFS;
 import com.maze.algorithm.DFS;
 import com.maze.algorithm.Dijkstra;
@@ -30,7 +31,7 @@ public class MazeService {
         registerAlgorithm("bfs", new BFS());
         registerAlgorithm("dfs", new DFS());
         registerAlgorithm("dijkstra", new Dijkstra());
-        // Future: registerAlgorithm("astar", new AStar());
+        registerAlgorithm("astar", new AStar());
     }
 
     /**
