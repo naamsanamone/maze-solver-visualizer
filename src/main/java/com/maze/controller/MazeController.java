@@ -4,6 +4,7 @@ import com.maze.model.Grid;
 import com.maze.model.SolveRequest;
 import com.maze.model.SolveResult;
 import com.maze.service.MazeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -57,5 +58,15 @@ public class MazeController {
     @ResponseBody
     public ResponseEntity<Map<String, String>> getAlgorithms() {
         return ResponseEntity.ok(mazeService.getAvailableAlgorithms());
+    }
+
+    /**
+     * Handle invalid algorithm or bad request errors gracefully.
+     */
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseBody
+    public ResponseEntity<Map<String, String>> handleBadRequest(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("error", ex.getMessage()));
     }
 }
