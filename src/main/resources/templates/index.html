@@ -7,104 +7,103 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="app-header">
-            <h1>🧩 Maze Solver Visualizer</h1>
-            <p class="subtitle">Interactive Pathfinding Algorithm Visualization</p>
+    <div class="app-layout">
+        <!-- Top Bar: Logo + Controls + Buttons (single row) -->
+        <header class="top-bar">
+            <div class="logo">
+                <h1>🧩 Maze Solver</h1>
+            </div>
+
+            <div class="toolbar">
+                <div class="control-group">
+                    <label for="algorithm-select">Algorithm</label>
+                    <select id="algorithm-select">
+                        <option value="" disabled selected>Loading…</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="speed-slider">Speed</label>
+                    <div class="slider-wrap">
+                        <input type="range" id="speed-slider" min="1" max="100" value="50">
+                        <span id="speed-label">50ms</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="grid-size">Grid</label>
+                    <select id="grid-size">
+                        <option value="15">15×15</option>
+                        <option value="20" selected>20×20</option>
+                        <option value="25">25×25</option>
+                        <option value="30">30×30</option>
+                        <option value="40">40×40</option>
+                    </select>
+                </div>
+
+                <!-- Draw Mode Buttons -->
+                <div class="control-group">
+                    <label>Draw</label>
+                    <div class="mode-buttons">
+                        <button id="mode-wall" class="mode-btn active" data-mode="wall" title="Draw walls">🧱</button>
+                        <button id="mode-start" class="mode-btn" data-mode="start" title="Place start">🟢</button>
+                        <button id="mode-end" class="mode-btn" data-mode="end" title="Place end">🔴</button>
+                        <button id="mode-erase" class="mode-btn" data-mode="erase" title="Erase">⬜</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="btn-solve" class="btn btn-primary" disabled>▶ Solve</button>
+                <button id="btn-generate" class="btn btn-secondary">🔀 Generate</button>
+                <button id="btn-clear-path" class="btn btn-outline">Clear</button>
+                <button id="btn-reset" class="btn btn-danger">🗑</button>
+            </div>
         </header>
 
-        <!-- Controls Panel -->
-        <div class="controls-panel">
-            <div class="control-group">
-                <label for="algorithm-select">Algorithm</label>
-                <select id="algorithm-select">
-                    <!-- Will be populated once algorithms are implemented -->
-                    <option value="" disabled selected>No algorithms yet</option>
-                </select>
-            </div>
-
-            <div class="control-group">
-                <label for="speed-slider">Speed</label>
-                <input type="range" id="speed-slider" min="1" max="100" value="50">
-                <span id="speed-label">50ms</span>
-            </div>
-
-            <div class="control-group">
-                <label for="grid-size">Grid Size</label>
-                <select id="grid-size">
-                    <option value="15">15 × 15</option>
-                    <option value="20" selected>20 × 20</option>
-                    <option value="25">25 × 25</option>
-                    <option value="30">30 × 30</option>
-                    <option value="40">40 × 40</option>
-                </select>
-            </div>
-
-            <div class="button-group">
-                <button id="btn-solve" class="btn btn-primary" disabled>▶ Solve</button>
-                <button id="btn-generate" class="btn btn-secondary">🔀 Generate Maze</button>
-                <button id="btn-clear-path" class="btn btn-outline">Clear Path</button>
-                <button id="btn-reset" class="btn btn-danger">🗑 Reset</button>
-            </div>
-        </div>
-
-        <!-- Drawing Mode Indicator -->
-        <div class="draw-mode-panel">
-            <span class="mode-label">Draw Mode:</span>
-            <button id="mode-wall" class="mode-btn active" data-mode="wall">🧱 Wall</button>
-            <button id="mode-start" class="mode-btn" data-mode="start">🟢 Start</button>
-            <button id="mode-end" class="mode-btn" data-mode="end">🔴 End</button>
-            <button id="mode-erase" class="mode-btn" data-mode="erase">⬜ Erase</button>
-        </div>
-
-        <!-- Main Content: Grid + Stats -->
-        <div class="main-content">
-            <!-- Canvas Grid -->
+        <!-- Main Area: Grid (center) + Stats Sidebar (right) -->
+        <main class="main-area">
             <div class="grid-container">
                 <canvas id="maze-canvas"></canvas>
             </div>
 
-            <!-- Stats Panel -->
-            <div class="stats-panel">
-                <h3>📊 Statistics</h3>
-                <div class="stat-item">
-                    <span class="stat-label">Algorithm</span>
-                    <span class="stat-value" id="stat-algo">—</span>
+            <aside class="stats-sidebar">
+                <div class="stats-section">
+                    <h3>📊 Statistics</h3>
+                    <div class="stat-row">
+                        <span class="stat-label">Algorithm</span>
+                        <span class="stat-value" id="stat-algo">—</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Explored</span>
+                        <span class="stat-value" id="stat-nodes">—</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Path Len</span>
+                        <span class="stat-value" id="stat-path">—</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Time</span>
+                        <span class="stat-value" id="stat-time">—</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Found</span>
+                        <span class="stat-value" id="stat-found">—</span>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Nodes Explored</span>
-                    <span class="stat-value" id="stat-nodes">—</span>
+                <div class="legend-section">
+                    <h3>🎨 Legend</h3>
+                    <div class="legend-grid">
+                        <span class="legend-dot" style="background:#2d2d2d"></span><span>Wall</span>
+                        <span class="legend-dot" style="background:#00e676"></span><span>Start</span>
+                        <span class="legend-dot" style="background:#ff5252"></span><span>End</span>
+                        <span class="legend-dot" style="background:#00bcd4"></span><span>Visited</span>
+                        <span class="legend-dot" style="background:#ffd700"></span><span>Path</span>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Path Length</span>
-                    <span class="stat-value" id="stat-path">—</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Time Taken</span>
-                    <span class="stat-value" id="stat-time">—</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Path Found</span>
-                    <span class="stat-value" id="stat-found">—</span>
-                </div>
-
-                <!-- Legend -->
-                <h3>🎨 Legend</h3>
-                <div class="legend">
-                    <div class="legend-item"><span class="legend-color" style="background:#2d2d2d"></span> Wall</div>
-                    <div class="legend-item"><span class="legend-color" style="background:#00e676"></span> Start</div>
-                    <div class="legend-item"><span class="legend-color" style="background:#ff5252"></span> End</div>
-                    <div class="legend-item"><span class="legend-color" style="background:#00bcd4"></span> Visited</div>
-                    <div class="legend-item"><span class="legend-color" style="background:#ffd700"></span> Shortest Path</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer class="app-footer">
-            <p>Built with Spring Boot + Thymeleaf</p>
-        </footer>
+                <div class="footer-text">Built with Spring Boot + Thymeleaf</div>
+            </aside>
+        </main>
     </div>
 
     <script th:src="@{/js/grid.js}"></script>
