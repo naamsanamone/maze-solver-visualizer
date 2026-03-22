@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridSizeSelect = document.getElementById('grid-size');
     const btnSolve = document.getElementById('btn-solve');
     const btnGenerate = document.getElementById('btn-generate');
-    const btnClearPath = document.getElementById('btn-clear-path');
     const btnReset = document.getElementById('btn-reset');
     const modeBtns = document.querySelectorAll('.mode-btn');
 
@@ -139,12 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ===== Clear Path Button =====
-    btnClearPath.addEventListener('click', () => {
-        visualizer.cancel();
-        mazeGrid.clearPath();
-        clearStats();
-    });
 
     // ===== Reset Button =====
     btnReset.addEventListener('click', () => {
