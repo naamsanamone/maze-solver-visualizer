@@ -16,14 +16,14 @@
 
             <div class="toolbar">
                 <div class="control-group">
-                    <label for="algorithm-select">Algorithm</label>
+                    <label for="algorithm-select">Alg:</label>
                     <select id="algorithm-select">
-                        <option value="" disabled selected>Loading…</option>
+                        <option value="" disabled selected>Loading</option>
                     </select>
                 </div>
 
                 <div class="control-group">
-                    <label for="speed-slider">Speed</label>
+                    <label for="speed-slider">Spd:</label>
                     <div class="slider-wrap">
                         <input type="range" id="speed-slider" min="1" max="100" value="50">
                         <span id="speed-label">50ms</span>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="control-group">
-                    <label for="grid-size">Grid</label>
+                    <label for="grid-size">Grid:</label>
                     <select id="grid-size">
                         <option value="15">15×15</option>
                         <option value="20" selected>20×20</option>
@@ -42,14 +42,11 @@
                 </div>
 
                 <!-- Draw Mode Buttons -->
-                <div class="control-group">
-                    <label>Draw</label>
-                    <div class="mode-buttons">
-                        <button id="mode-wall" class="mode-btn active" data-mode="wall" title="Draw walls">🧱</button>
-                        <button id="mode-start" class="mode-btn" data-mode="start" title="Place start">🟢</button>
-                        <button id="mode-end" class="mode-btn" data-mode="end" title="Place end">🔴</button>
-                        <button id="mode-erase" class="mode-btn" data-mode="erase" title="Erase">⬜</button>
-                    </div>
+                <div class="control-group mode-group">
+                    <button id="mode-wall" class="mode-btn active" data-mode="wall" title="Draw walls">🧱</button>
+                    <button id="mode-start" class="mode-btn" data-mode="start" title="Place start">🟢</button>
+                    <button id="mode-end" class="mode-btn" data-mode="end" title="Place end">🔴</button>
+                    <button id="mode-erase" class="mode-btn" data-mode="erase" title="Erase">⬜</button>
                 </div>
             </div>
 
@@ -93,11 +90,11 @@
                 <div class="legend-section">
                     <h3>🎨 Legend</h3>
                     <div class="legend-grid">
-                        <span class="legend-dot" style="background:#2d2d2d"></span><span>Wall</span>
-                        <span class="legend-dot" style="background:#00e676"></span><span>Start</span>
-                        <span class="legend-dot" style="background:#ff5252"></span><span>End</span>
-                        <span class="legend-dot" style="background:#00bcd4"></span><span>Visited</span>
-                        <span class="legend-dot" style="background:#ffd700"></span><span>Path</span>
+                        <span class="legend-dot" style="background:#2d2d2d; box-shadow: inset 0 0 2px rgba(255,255,255,0.1)"></span><span>Wall</span>
+                        <span class="legend-dot" style="background:#00e676; box-shadow: 0 0 8px rgba(0,230,118,0.5)"></span><span>Start</span>
+                        <span class="legend-dot" style="background:#ff5252; box-shadow: 0 0 8px rgba(255,82,82,0.5)"></span><span>End</span>
+                        <span class="legend-dot" style="background:#00bcd4; box-shadow: 0 0 8px rgba(0,188,212,0.5)"></span><span>Visited</span>
+                        <span class="legend-dot" style="background:#ffd700; box-shadow: 0 0 8px rgba(255,215,0,0.5)"></span><span>Path</span>
                     </div>
                 </div>
                 <div class="footer-text">Built with Spring Boot + Thymeleaf</div>
