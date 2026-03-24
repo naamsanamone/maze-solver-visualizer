@@ -6,6 +6,7 @@ An interactive web application that visualizes pathfinding algorithms solving ma
 
 ## ✨ Features
 
+- **Single-Viewport Premium UI** — A fully cohesive, eye-catching workspace featuring glassmorphism, glowing neon accents, and perfectly aligned horizontal controls. No scrolling required!
 - **4 Pathfinding Algorithms** with animated step-by-step visualization
   - **BFS** — Breadth-First Search (guarantees shortest path)
   - **DFS** — Depth-First Search (deep exploration, non-optimal)
@@ -13,12 +14,11 @@ An interactive web application that visualizes pathfinding algorithms solving ma
   - **A*** — Optimal search with Manhattan distance heuristic
 - **Maze Generation** — Recursive Backtracker creates perfect mazes with winding corridors
 - **Interactive Grid** — Draw walls, place start/end points, erase cells via click & drag
-- **Real-time Animation** — Watch algorithms explore the grid with gradient-colored visited nodes and golden shortest path
-- **Statistics Panel** — Nodes explored, path length, execution time, and path found status
-- **Speed Control** — Adjustable animation speed slider
-- **Multiple Grid Sizes** — 10×10, 15×15, 20×20, 25×25, 30×30
+- **Real-time Animation** — Watch algorithms explore the grid with visually stunning gradient-colored visited nodes and golden shortest paths
+- **Dynamic Statistics Panel** — Tracks nodes explored, path length, execution time, and path found status
+- **Multiple Grid Sizes** — 15×15, 20×20, 25×25, 30×30, 40×40
 
-![BFS Solved](docs/screenshots/bfs-solved.png)
+![DFS Solved](docs/screenshots/dfs-solved.png)
 
 ## 🏗️ Architecture
 
