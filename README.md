@@ -18,7 +18,7 @@ An interactive web application that visualizes pathfinding algorithms solving ma
 - **Dynamic Statistics Panel** — Tracks nodes explored, path length, execution time, and path found status
 - **Multiple Grid Sizes** — 15×15, 20×20, 25×25, 30×30, 40×40
 
-![DFS Solved](docs/screenshots/dfs-solved.png)
+![A* Fast Performance](docs/screenshots/astar-solved.png)
 
 ## 🏗️ Architecture
 
