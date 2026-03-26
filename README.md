@@ -2,7 +2,7 @@
 
 An interactive web application that visualizes pathfinding algorithms solving mazes in real-time. Built with **Spring Boot** and **HTML5 Canvas** to demonstrate core DSA concepts through engaging visual animations.
 
-![UI Overview](docs/screenshots/ui-overview.png)
+![UI Overview](docs/screenshots/ui-overview.webp)
 
 ## ✨ Features
 
@@ -18,7 +18,7 @@ An interactive web application that visualizes pathfinding algorithms solving ma
 - **Dynamic Statistics Panel** — Tracks nodes explored, path length, execution time, and path found status
 - **Multiple Grid Sizes** — 15×15, 20×20, 25×25, 30×30, 40×40
 
-![A* Fast Performance](docs/screenshots/astar-solved.png)
+![A* Fast Performance](docs/screenshots/astar-solved.webp)
 
 ## 🏗️ Architecture
 
