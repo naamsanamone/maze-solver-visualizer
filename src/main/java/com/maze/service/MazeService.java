@@ -5,6 +5,8 @@ import com.maze.algorithm.BFS;
 import com.maze.algorithm.DFS;
 import com.maze.algorithm.Dijkstra;
 import com.maze.algorithm.PathfindingAlgorithm;
+import com.maze.generator.MazeGenerator;
+import com.maze.generator.RecursiveBacktracker;
 import com.maze.model.Grid;
 import com.maze.model.SolveRequest;
 import com.maze.model.SolveResult;
@@ -15,13 +17,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Service layer that delegates maze solving to the appropriate algorithm.
- * Uses Strategy Pattern — algorithms are registered by name.
+ * Service layer that delegates maze solving to the appropriate algorithm
+ * and maze generation to the appropriate generator.
  */
 @Service
 public class MazeService {
 
     private final Map<String, PathfindingAlgorithm> algorithms = new HashMap<>();
+    private final MazeGenerator mazeGenerator = new RecursiveBacktracker();
 
     /**
      * Register all available algorithms on startup.
@@ -72,4 +75,12 @@ public class MazeService {
                 request.getEndCol()
         );
     }
+
+    /**
+     * Generate a random maze using the Recursive Backtracker algorithm.
+     */
+    public Grid generateMaze(int rows, int cols) {
+        return mazeGenerator.generate(rows, cols);
+    }
 }
+

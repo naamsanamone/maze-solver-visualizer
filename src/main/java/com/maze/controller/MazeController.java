@@ -1,5 +1,6 @@
 package com.maze.controller;
 
+import com.maze.model.Grid;
 import com.maze.model.SolveRequest;
 import com.maze.model.SolveResult;
 import com.maze.service.MazeService;
@@ -37,6 +38,16 @@ public class MazeController {
     public ResponseEntity<SolveResult> solve(@RequestBody SolveRequest request) {
         SolveResult result = mazeService.solve(request);
         return ResponseEntity.ok(result);
+    }
+
+    /**
+     * REST endpoint: Generate a random maze.
+     */
+    @PostMapping("/api/generate")
+    @ResponseBody
+    public ResponseEntity<Grid> generate(@RequestParam int rows, @RequestParam int cols) {
+        Grid maze = mazeService.generateMaze(rows, cols);
+        return ResponseEntity.ok(maze);
     }
 
     /**
