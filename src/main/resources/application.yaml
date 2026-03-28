@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: maze-solver-visualizer
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
