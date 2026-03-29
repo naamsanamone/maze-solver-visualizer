@@ -321,9 +321,10 @@ input[type="range"] {
 .stat-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 4px 0;
+    align-items: flex-start;
+    padding: 6px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    gap: 8px;
 }
 
 .stat-row:last-child {
@@ -336,11 +337,15 @@ input[type="range"] {
 }
 
 .stat-value {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--accent-primary);
     text-shadow: 0 0 8px rgba(0, 230, 118, 0.4);
     font-variant-numeric: tabular-nums;
+    text-align: right;
+    flex: 1;
+    word-break: break-word;
+    line-height: 1.2;
 }
 
 /* ===== Legend ===== */
