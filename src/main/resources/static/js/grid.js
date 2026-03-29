@@ -51,9 +51,9 @@ class MazeGrid {
      */
     _resize() {
         const container = this.canvas.parentElement;
-        const maxWidth = container.clientWidth - 24; // account for padding
-        const maxHeight = Math.min(600, window.innerHeight - 300);
-        this.cellSize = Math.floor(Math.min(maxWidth / this.cols, maxHeight / this.rows));
+        const maxWidth = container.clientWidth - 20;
+        const maxHeight = container.clientHeight - 20;
+        this.cellSize = Math.max(4, Math.floor(Math.min(maxWidth / this.cols, maxHeight / this.rows)));
         this.canvas.width = this.cellSize * this.cols;
         this.canvas.height = this.cellSize * this.rows;
         this.render();
