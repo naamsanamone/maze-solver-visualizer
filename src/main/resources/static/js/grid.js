@@ -241,8 +241,9 @@ class MazeGrid {
     importGrid(gridData) {
         this.rows = gridData.rows;
         this.cols = gridData.cols;
-        this.startPos = null;
-        this.endPos = null;
+        
+        // Re-initialize the 2D array in case backend adjusted dimensions (e.g. 20x20 -> 21x21)
+        this._initGrid();
 
         for (let r = 0; r < this.rows; r++) {
             for (let c = 0; c < this.cols; c++) {
