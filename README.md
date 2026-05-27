@@ -1,26 +1,24 @@
-# 🧩 Maze Solver Visualizer
+# Maze Solver Visualizer
 
-An interactive web application that visualizes pathfinding algorithms solving mazes in real-time. Built with **Spring Boot** and **HTML5 Canvas** to demonstrate core DSA concepts through engaging visual animations.
+A web app that visualizes pathfinding algorithms (BFS, DFS, Dijkstra, A*) solving mazes in real-time. Built with Spring Boot and HTML5 Canvas.
 
 ![UI Overview](docs/screenshots/ui-overview.webp)
 
-## ✨ Features
+## Features
 
-- **Single-Viewport Premium UI** — A fully cohesive, eye-catching workspace featuring glassmorphism, glowing neon accents, and perfectly aligned horizontal controls. No scrolling required!
-- **4 Pathfinding Algorithms** with animated step-by-step visualization
-  - **BFS** — Breadth-First Search (guarantees shortest path)
+- **4 Pathfinding Algorithms** with step-by-step animation
+  - **BFS** — Breadth-First Search (shortest path in unweighted graphs)
   - **DFS** — Depth-First Search (deep exploration, non-optimal)
-  - **Dijkstra** — Weighted shortest path using priority queue
-  - **A*** — Optimal search with Manhattan distance heuristic
-- **Maze Generation** — Recursive Backtracker creates perfect mazes with winding corridors
-- **Interactive Grid** — Draw walls, place start/end points, erase cells via click & drag
-- **Real-time Animation** — Watch algorithms explore the grid with visually stunning gradient-colored visited nodes and golden shortest paths
-- **Dynamic Statistics Panel** — Tracks nodes explored, path length, execution time, and path found status
-- **Multiple Grid Sizes** — 15×15, 20×20, 25×25, 30×30, 40×40
+  - **Dijkstra** — Weighted shortest path with priority queue
+  - **A*** — Heuristic search with Manhattan distance
+- **Maze Generation** — Recursive Backtracker algorithm
+- **Interactive Grid** — draw walls, place start/end, erase via click & drag
+- **Live Stats** — nodes explored, path length, execution time
+- **Multiple Grid Sizes** — 15×15 to 40×40
 
 ![A* Fast Performance](docs/screenshots/astar-solved.webp)
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────┐
@@ -40,12 +38,12 @@ An interactive web application that visualizes pathfinding algorithms solving ma
 └──────────┴──────────┴──────┴────────────┘
 ```
 
-### Design Patterns Used
+
 - **Strategy Pattern** — Algorithms implement a common `PathfindingAlgorithm` interface, registered by name in `MazeService`
 - **MVC** — Clean separation between Controller, Service, and Model layers
 - **Template Method** — Common grid traversal logic with algorithm-specific data structures (Queue vs Stack vs PriorityQueue)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - **Java 17+** (tested with Java 21)
@@ -71,7 +69,7 @@ cd maze-solver-visualizer
 # 30 tests: 19 algorithm + 6 generator + 5 integration
 ```
 
-## 🔬 Algorithm Comparison
+## Algorithm Comparison
 
 | Algorithm | Optimal? | Data Structure | Time Complexity | Best For |
 |-----------|----------|---------------|----------------|----------|
@@ -80,7 +78,7 @@ cd maze-solver-visualizer
 | Dijkstra | ✅ Yes | PriorityQueue | O((V+E) log V) | Weighted shortest path |
 | A* | ✅ Yes | PriorityQueue | O((V+E) log V) | Guided optimal search |
 
-## 📦 Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -90,7 +88,7 @@ cd maze-solver-visualizer
 | Templating | Thymeleaf |
 | Testing | JUnit 5, MockMvc |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/main/java/com/maze/
@@ -117,7 +115,7 @@ src/main/java/com/maze/
 
 src/main/resources/
 ├── static/
-│   ├── css/style.css             # Glassmorphism dark theme
+│   ├── css/style.css             # Dark theme styles
 │   └── js/
 │       ├── grid.js               # Canvas grid rendering + interaction
 │       ├── api.js                # REST API client
@@ -132,7 +130,7 @@ src/test/java/com/maze/
 └── controller/MazeControllerIntegrationTest.java  # 5 integration tests
 ```
 
-## 📝 API Reference
+## API Reference
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -141,6 +139,6 @@ src/test/java/com/maze/
 | `POST` | `/api/solve` | Solve maze (JSON body: grid + algorithm + start/end) |
 | `POST` | `/api/generate?rows=N&cols=N` | Generate random maze |
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
